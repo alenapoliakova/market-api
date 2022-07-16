@@ -1,0 +1,58 @@
+# curl -X 'POST'
+#  'http://127.0.0.1:8004/imports'
+#  -H 'accept: application/json'
+#  -H 'Content-Type: application/json'
+#  -d '{
+#  "items": [
+#    {
+#      "id": "3fa85f64-5717-4562-b3fc-2c963f66a444",
+#      "name": "Оффер",
+#      "parentId": "3fa85f64-5717-4562-b3fc-2c963f66a333",
+#      "type": "OFFER",
+#      "price": 234
+#    }
+#  ],
+#  "updateDate": "2022-05-28T21:12:01.516Z"
+#}'
+POST http://127.0.0.1:8004/imports
+accept: application/json
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66a444",
+      "name": "Оффер",
+      "parentId": "3fa85f64-5717-4562-b3fc-2c963f66a333",
+      "type": "OFFER",
+      "price": 234
+    }
+  ],
+  "updateDate": "2022-05-28T21:12:01.516Z"
+}
+
+###
+
+# curl -X 'DELETE'
+#  'http://127.0.0.1:8004/delete/3fa85f64-5717-4562-b3fc-2c963f66a454'
+#  -H 'accept: application/json'
+DELETE http://127.0.0.1:8004/delete/3fa85f64-5717-4562-b3fc-2c963f66a454
+accept: application/json
+
+###
+
+# curl -X 'GET'
+#  'http://127.0.0.1:8004/nodes/3fa85f64-5717-4562-b3fc-2c963f66a454'
+#  -H 'accept: application/json'
+GET http://127.0.0.1:8004/nodes/3fa85f64-5717-4562-b3fc-2c963f66a454
+accept: application/json
+
+###
+
+# curl -X 'GET'
+#  'http://127.0.0.1:8004/sales?date=2022-05-28T21%3A12%3A01.516Z'
+#  -H 'accept: application/json'
+GET http://127.0.0.1:8004/sales?date=2022-05-28T21%3A12%3A01.516Z
+accept: application/json
+
+###

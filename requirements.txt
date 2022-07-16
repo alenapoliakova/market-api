@@ -1,0 +1,7 @@
+python-dotenv==0.20.0
+fastapi==0.78.0
+pydantic==1.9.1
+uvicorn==0.17.6
+sqlalchemy==1.4.37
+sqlalchemy-utils==0.38.2
+asyncpg==0.25.0

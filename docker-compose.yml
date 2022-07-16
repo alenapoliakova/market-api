@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - "8004:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: uvicorn analyzer.api.app:app --host ${UVICORN_HOST} --port ${UVICORN_PORT}
+
+  db:
+    image: postgres:13-alpine
+    container_name: postgres
+    ports:
+      - "8001:5432"
+    env_file:
+      - .env
+    user: ${POSTGRES_USER}
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
